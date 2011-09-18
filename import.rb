@@ -7,13 +7,12 @@ require 'open-uri'
 require 'model'
 
 # get raw html file to scrape
-# source is http://www.sky.com/shop/tv/anytime-plus/whats-on/full-movies-list/
-doc = open('movies.html') { |f| Hpricot(f) }
+doc = open('http://www.sky.com/shop/tv/anytime-plus/whats-on/full-movies-list/') { |f| Hpricot(f) }
 
 # movie list is in three columns - subject to change of course
-columns = ['#Row1MoviesRight-Using_Sky_Anytime____TV_on_demand___Sky_VOD',
-           '#Row1MoviesLeft-Using_Sky_Anytime____TV_on_demand___Sky_VOD',
-           '#Row1MoviesCentre-Using_Sky_Anytime____TV_on_demand___Sky_VOD']
+columns = ['#Row1MoviesLeft-Using_Sky_Anytime____TV_on_demand___Sky_VOD',
+           '#Row1MoviesCentre-Using_Sky_Anytime____TV_on_demand___Sky_VOD',
+           '#Row1MoviesRight-Using_Sky_Anytime____TV_on_demand___Sky_VOD']
 
 # find the movies - separated by newlines and linebreak tags
 movies = []

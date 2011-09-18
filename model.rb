@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'sqlite3'
 require 'active_record'
 
 dbconfig = YAML.load(File.read('config/database.yml'))

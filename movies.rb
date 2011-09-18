@@ -1,6 +1,4 @@
 require 'rubygems'
-require 'sqlite3'
-require 'active_record'
 require 'sinatra'
 
 require 'model'

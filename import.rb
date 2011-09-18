@@ -4,6 +4,8 @@ require 'active_record'
 require 'hpricot'
 require 'open-uri'
 
+require 'model'
+
 # get raw html file to scrape
 # source is http://www.sky.com/shop/tv/anytime-plus/whats-on/full-movies-list/
 doc = open('movies.html') { |f| Hpricot(f) }
@@ -22,28 +24,10 @@ columns.each do |c|
   end
 end
 
-# set up database
-
-# using activerecord and sqlite
-db_file = '.movies.db'
-db = SQLite3::Database.new('.movies.db')
-ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => db_file)
-class Movie < ActiveRecord::Base; end
-
-# define the movies table (if it doesn't already exist)
-if !Movie.table_exists?
-  ActiveRecord::Base.connection.create_table(:movies) do |t|
-    t.column :name, :string
-    t.column :rating, :integer
-    t.column :created_at, :timestamp
-  end
-end
-
 # insert movies
 movies.each do |m|
   if Movie.where(:name => m).count.zero?
-    Movie.create(:name => m,
-                 :rating => nil,
-                 :created_at => Time.now)
+    Movie.create(:name => m)
+    print "#{m}\n"
   end
 end

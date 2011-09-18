@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Anytom - Films to watch on Sky Anytime according to Rotten Tomatoes reviews</title>
+		<style>
+			body { 
+				font-family: helvetica;
+				margin: 1em 2em;
+			}
+			table {
+				border-collapse: collapse;
+			}
+			th {
+				padding: 0.5em 1em 0.5em 0;
+				border-bottom: #ddd solid 2px;
+				text-align: left;
+			}
+			td {
+				padding-right: 1em;
+				border-bottom: #ddd solid 1px;
+			}
+			td a {
+				display: block;
+				text-decoration: none;
+				color: black;
+				padding: 0.5em 0;
+			}
+			td a:hover {
+				color: #999;
+			}
+			td a:focus, td a:active {
+				font-weight: bold;
+				outline: none;
+			}
+			#details {
+				position: fixed;
+				top: 1em;
+				right: 2em;
+				width: 500px;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	</head>
+	<body>
+
+		<h1>Anytom</h1>
+		<p>Films to watch on Sky Anytime according to Rotten Tomatoes reviews</p>
+		
+		<table>
+			<tr>
+				<th>Rating</th>
+				<th>Film</th>
+			</tr>
+			<% @movies.each do |movie| %>
+			<tr>
+				<td><%= movie.rating %></td>
+				<td><a class="movie" data-rt="<%= movie.rt_id %>" href="<%= movie.rt_url %>"><%= movie.name %></a></td>
+			</tr>
+			<% end %>
+		</table>
+	
+		<div id="details"></div>
+	
+		<script>
+			$('.movie').click(function() {
+				var rt_id = $(this).data('rt');
+				$.ajax({
+					url: '/details/' + rt_id,
+					success: function(data) {
+						$('#details').html(data);
+					}
+				});
+				$(this).focus();
+				return false;
+			});
+		</script>
+	</body>
+</html>

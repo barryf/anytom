@@ -2,7 +2,7 @@ require 'rubygems'
 require 'json'
 require 'net/http'
 
-require 'model'
+require './model'
 
 rt_key = ENV['ROTTEN_TOMATOES_KEY'] ||= ''
 rt_url = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=#{rt_key}&q="

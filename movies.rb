@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 
-require 'model'
+require './model'
 
 get '/' do
   @movies = Movie.where('rating is not null and rating > 0').order('rating DESC')

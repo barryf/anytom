@@ -2,7 +2,7 @@ require 'rubygems'
 require 'hpricot'
 require 'open-uri'
 
-require 'model'
+require './model'
 
 # get raw html file to scrape
 doc = open('http://www.sky.com/shop/tv/anytime-plus/whats-on/full-movies-list/') { |f| Hpricot(f) }

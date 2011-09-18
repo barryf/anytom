@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sqlite3'
 require 'active_record'
 
-db_file = 'movies.db'
+db_file = '.movies.db'
 db = SQLite3::Database.new(db_file)
 ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => db_file)
 

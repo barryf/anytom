@@ -2,9 +2,8 @@ require 'rubygems'
 require 'sqlite3'
 require 'active_record'
 
-db_file = '.movies.db'
-db = SQLite3::Database.new(db_file)
-ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => db_file)
+dbconfig = YAML.load(File.read('config/database.yml'))
+ActiveRecord::Base.establish_connection dbconfig['production']
 
 class Movie < ActiveRecord::Base; end
 

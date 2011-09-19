@@ -46,7 +46,7 @@ Movie.all.each do |movie|
       exit
     end    
 
-    # wait 20ms - only allowed 10 req/s so restrict calls to 5/s
+    # wait 200ms - only allowed 10 req/s so restrict calls to 5/s
     sleep(0.2)
   end  
 end

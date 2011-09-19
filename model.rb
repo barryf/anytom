@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'active_record'
 
-dbconfig = YAML.load_file('config/database.yml')
+dbconfig = YAML.load_file('./config/database.yml')
 ActiveRecord::Base.establish_connection dbconfig[settings.environment.to_s]
 
 class Movie < ActiveRecord::Base; end

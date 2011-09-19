@@ -6,7 +6,7 @@ The Sky Anytime+ film library is listed on their website in alphabetical order a
 
 Anytom queries the Rotten Tomatoes API for critics' ratings, running times, year and synopsis and displays the available films in ratings order, helping you sort the wheat from the chaff.
 
-The name? ANYtime rotten TOMatoes.
+[Read the announcement on my blog](http://barryfrost.com/articles/deciding-what-film-to-watch-with-apis-and-ruby).
 
 ## PREREQUISITES
 
@@ -27,9 +27,22 @@ The name? ANYtime rotten TOMatoes.
 1. Fire up the Sinatra app: `ruby movies.rb`.
 1. Browse to `localhost:9393` in your browser.
 
+## HEROKU
+
+You can alternatively host this project on [Heroku](http://www.heroku.com/):
+
+	git clone git@github.com:barryf/anytom.git
+	cd anytom/
+	heroku create --cedar
+	git push heroku master
+	heroku addons:add shared-database
+	heroku config:add ROTTEN_TOMATOES_KEY=YOUR_KEY
+	heroku run rake import
+	heroku run rake ratings
+	heroku open
+
 ## TODO
 
-- Make this a Heroku service (check copyright implications).
 - Mobile friendly - no absolutely/fixed DIVs for the details.
 
 ## COPYRIGHT

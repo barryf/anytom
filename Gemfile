@@ -4,10 +4,10 @@ gem 'activerecord'
 gem 'json'
 gem 'sinatra'
 gem 'thin'
+gem 'foreman'
 
 group :development do
   gem 'sqlite3'
-  gem 'foreman'
 end
 
 group :production do

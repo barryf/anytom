@@ -1,7 +1,0 @@
-development: 
-  adapter: postgresql
-  username: postgres
-  port: 5432
-  host: localhost
-  database: movies
-  password: 

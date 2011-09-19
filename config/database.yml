@@ -1,3 +1,7 @@
 development: 
-  adapter: sqlite3
-  database: .movies.db
+  adapter: postgresql
+  username: postgres
+  port: 5432
+  host: localhost
+  database: movies
+  password: 

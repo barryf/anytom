@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'active_record'
 
-if settings.environment == :production
+if ENV['DATABASE_URL']
   db = URI.parse(ENV['DATABASE_URL'])
   ActiveRecord::Base.establish_connection(
     :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,

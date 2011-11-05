@@ -31,7 +31,7 @@ Movie.all.each do |movie|
         movie.rt_id = data['movies'][0]['id']
         movie.rt_url = data['movies'][0]['links']['alternate']
         movie.poster_url = data['movies'][0]['posters']['detailed']
-        movie.summary = data['movies'][0]['critics_consensus'][0..254]
+        movie.summary = data['movies'][0]['critics_consensus'].to_s[0..254]
         movie.save
       
         # successful find and insert to show film and rating

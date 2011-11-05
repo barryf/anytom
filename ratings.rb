@@ -48,7 +48,7 @@ Movie.all.each do |movie|
       end    
 
     # any errors then ignore
-    rescue Error => e
+    rescue Exception => e
       puts "Error: #{e.message}"
     end
     
